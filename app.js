@@ -1,4 +1,4 @@
-
+const dotenv = require("dotenv"); //Keys are stored in .env file
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -11,7 +11,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://yash1709:1709@cluster0.usqmt.mongodb.net/todolistDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+dotenv.config();
+const url = process.env.MONGO_URI;
+
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemsSchema = new mongoose.Schema({
   name: String
