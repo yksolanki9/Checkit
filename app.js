@@ -57,8 +57,6 @@ app.get("/", function(req, res) {
     // console.log(items);
     res.render("list", {listTitle: "Today", newListItems: items});
   });
-  
-
 });
 
 app.post("/delete", function(req, res){
